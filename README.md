@@ -34,6 +34,7 @@
 
 **1. 物理设备挂载 (Windows PowerShell - 管理员)**
 将物理串口控制权从 Windows 移交给 WSL2：
+
 usbipd list
 usbipd attach --wsl --busid <你的BUSID>
 
