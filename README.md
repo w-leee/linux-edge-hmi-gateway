@@ -25,3 +25,17 @@
                 │ (每 5 秒异步请求)
                 │
 [Qt/QML HMI 监控大屏] ──(信号槽机制实时刷新 UI)
+
+## ⚡ 一键启动与自动化脚本
+
+为了提升开发与测试效率，本项目提供了一个全自动化的启动脚本 `start.sh`。该脚本会自动完成串口权限修复、依赖检查、项目编译，并在后台拉起网关服务与前端监控面板。
+
+
+**1. 物理设备挂载 (Windows PowerShell - 管理员)**
+将物理串口控制权从 Windows 移交给 WSL2：
+usbipd list
+usbipd attach --wsl --busid <你的BUSID>
+
+**2.linux环境下启动**
+cd ~/workspace/Edge-Gateway-System
+./start.sh
