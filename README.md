@@ -24,4 +24,4 @@
                 ▲
                 │ (每 5 秒异步请求)
                 │
-[Qt/QML HMI 监控大屏] ──(信号槽机制实时刷新 UI)<img width="1440" height="1920" alt="Camera_1040g3qo327bagkcamgc05nd1ogcg85ojou1p3bg" src="https://github.com/user-attachments/assets/9462b984-8a8b-4ffd-9226-2dbe92c9a99f" />
+[Qt/QML HMI 监控大屏] ──(信号槽机制实时刷新 UI)
