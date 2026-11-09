@@ -1,0 +1,7 @@
+build/
+.vscode/
+*.log
+# 忽略后台生成的临时文件
+*_serial
+nohup.out
+*.log

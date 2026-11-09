@@ -1,0 +1,5 @@
+build/
+*.log
+gateway_serial
+sensor_serial
+.vscode/
