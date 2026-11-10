@@ -1,7 +1,9 @@
 #pragma once
+
 #include <vector>
 #include <mutex>
 #include <condition_variable>
+#include <stdexcept>
 
 template <typename T>
 class RingQueue {
@@ -37,6 +39,12 @@ public:
         return item;
     }
 
+    // 🚨 新增：获取当前队列中的元素个数（用于优雅退出时的清空判断）
+    size_t size() const {
+        std::lock_guard<std::mutex> lock(mutex_);
+        return size_;
+    }
+
 private:
     size_t capacity_;
     std::vector<T> buffer_;
@@ -44,7 +52,8 @@ private:
     size_t write_idx_ = 0;
     size_t size_ = 0;
     
-    std::mutex mutex_;
+    // mutable 允许在 const 方法（如 size()）中修改 mutex_
+    mutable std::mutex mutex_; 
     std::condition_variable not_full_;
     std::condition_variable not_empty_;
 };

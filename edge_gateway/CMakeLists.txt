@@ -19,3 +19,13 @@ add_executable(gateway
 
 target_include_directories(gateway PRIVATE include)
 target_link_libraries(gateway PRIVATE Threads::Threads spdlog::spdlog mosquitto yaml-cpp)
+
+# ==========================================
+# 单元测试配置
+# ==========================================
+enable_testing()
+find_package(GTest REQUIRED)
+
+add_executable(test_ring_queue tests/test_ring_queue.cpp)
+target_include_directories(test_ring_queue PRIVATE include)
+target_link_libraries(test_ring_queue PRIVATE Threads::Threads GTest::gtest GTest::gtest_main)
