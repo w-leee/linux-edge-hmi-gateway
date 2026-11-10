@@ -9,8 +9,13 @@ find_package(Threads REQUIRED)
 find_package(spdlog REQUIRED)
 find_package(yaml-cpp REQUIRED)
 
-add_executable(gateway src/main.cpp)
-target_include_directories(gateway PRIVATE include)
+add_executable(gateway 
+    src/main.cpp
+    src/GlobalState.cpp
+    src/SerialManager.cpp
+    src/MqttManager.cpp
+    src/HttpServerManager.cpp
+)
 
-# 🚨 这里加上了双冒号
-target_link_libraries(gateway PRIVATE Threads::Threads spdlog::spdlog mosquitto yaml-cpp::yaml-cpp)
+target_include_directories(gateway PRIVATE include)
+target_link_libraries(gateway PRIVATE Threads::Threads spdlog::spdlog mosquitto yaml-cpp)
