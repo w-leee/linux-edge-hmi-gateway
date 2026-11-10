@@ -1,0 +1,126 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2160 900" width="2160" height="900" font-family="'Noto Sans CJK SC','PingFang SC','Microsoft YaHei',system-ui,sans-serif">
+<rect width="2160" height="900" fill="#ffffff"/>
+<defs>
+<filter id="sh" x="-30%" y="-30%" width="160%" height="170%">
+  <feDropShadow dx="0" dy="2.5" stdDeviation="3.2" flood-color="#0f172a" flood-opacity="0.10"/>
+</filter>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#475569"/></marker>
+<marker id="arrowo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+  <path d="M0,0 L10,5 L0,10 z" fill="#e08b3c"/></marker>
+</defs>
+<text x="55.0" y="52.0" font-size="21" fill="#0f172a" font-weight="700" text-anchor="start" letter-spacing="0.5">Wi-Fi 无线分布式架构 · ESP32 节点 → 局域网 → 树莓派边缘网关</text>
+<text x="55.0" y="76.0" font-size="11.5" fill="#64748b" font-weight="400" text-anchor="start">无线采集 · 网络接入 · 多线程解耦 · 本地展示 + 云端双出口</text>
+<line x1="230" y1="150" x2="1900" y2="150" stroke="#e6ebf2" stroke-width="2"/>
+<circle cx="230" cy="150" r="5.5" fill="#e08b3c" stroke="#ffffff" stroke-width="2"/>
+<text x="230.0" y="136.0" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="middle" letter-spacing="0.8">① 物理采集 · 无线节点</text>
+<circle cx="680" cy="150" r="5.5" fill="#7b8794" stroke="#ffffff" stroke-width="2"/>
+<text x="680.0" y="136.0" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="middle" letter-spacing="0.8">② 网络接入</text>
+<circle cx="1260" cy="150" r="5.5" fill="#2c6cb0" stroke="#ffffff" stroke-width="2"/>
+<text x="1260.0" y="136.0" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="middle" letter-spacing="0.8">③ 边缘网关（多线程）</text>
+<circle cx="1900" cy="150" r="5.5" fill="#7a4fc0" stroke="#ffffff" stroke-width="2"/>
+<text x="1900.0" y="136.0" font-size="10.5" fill="#64748b" font-weight="700" text-anchor="middle" letter-spacing="0.8">④ 本地 / 云端展示</text>
+<rect x="55" y="235" width="350" height="310" rx="12" fill="#ffe8d1" stroke="#e08b3c" stroke-width="2" filter="url(#sh)"/>
+<text x="230.0" y="269.0" font-size="13" fill="#7a3c05" font-weight="700" text-anchor="middle" letter-spacing="0.4">ESP32 独立节点</text>
+<text x="230.0" y="287.0" font-size="9.5" fill="#a8611f" font-weight="400" text-anchor="middle" letter-spacing="0.6">无线部署 · 免布线</text>
+<rect x="80" y="300" width="300" height="96" rx="10" fill="#ffe8d1" stroke="#e08b3c" stroke-width="1.3"/>
+<text x="230.0" y="350.0" font-size="12" fill="#7a3c05" font-weight="700" text-anchor="middle">DHT11 温湿度采集</text>
+<text x="230.0" y="368.0" font-size="9.5" fill="#4b5563" font-weight="400" text-anchor="middle">采集真实环境数据</text>
+<rect x="80" y="415" width="300" height="96" rx="10" fill="#ffe8d1" stroke="#e08b3c" stroke-width="1.3"/>
+<text x="230.0" y="465.0" font-size="12" fill="#7a3c05" font-weight="700" text-anchor="middle">Wi-Fi TCP Client</text>
+<text x="230.0" y="483.0" font-size="9.5" fill="#4b5563" font-weight="400" text-anchor="middle">或 MQTT Client · 定时上报</text>
+<path d="M230,396 L230,415" stroke="#e08b3c" stroke-width="1.4" marker-end="url(#arrowo)" fill="none"/>
+<line x1="405" y1="390" x2="450" y2="390" stroke="#e08b3c" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"/>
+<line x1="500" y1="390" x2="545" y2="390" stroke="#e08b3c" stroke-width="2" stroke-dasharray="7 6" stroke-linecap="round"/>
+<path d="M480,366 L456,400 L472,400 L462,432 L494,386 L476,386 Z" fill="#e08b3c" stroke="#ffffff" stroke-width="1.8" stroke-linejoin="round"/>
+<rect x="420.1" y="336.0" width="109.8" height="29.0" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="475.0" y="346.0" font-size="10" fill="#b3561a" font-weight="600" text-anchor="middle">Wi-Fi 无线传输</text>
+<text x="475.0" y="359.5" font-size="10" fill="#b3561a" font-weight="600" text-anchor="middle">(TCP / UDP / MQTT)</text>
+<rect x="545" y="320" width="270" height="140" rx="10" fill="#eef1f5" stroke="#7b8794" stroke-width="1.6" filter="url(#sh)"/>
+<text x="680.0" y="384.5" font-size="12.5" fill="#243040" font-weight="700" text-anchor="middle">宿舍路由器 / 局域网 Wi-Fi</text>
+<text x="680.0" y="402.5" font-size="9.5" fill="#4b5563" font-weight="400" text-anchor="middle">ESP32 与树莓派处于同一局域网</text>
+<text x="680.0" y="417.5" font-size="9.5" fill="#4b5563" font-weight="400" text-anchor="middle">内网 IP · 免公网穿透</text>
+<path d="M815.0,390.0 L905.0,390.0" fill="none" stroke="#475569" stroke-width="2.0" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="817.8" y="367.8" width="48.4" height="14.7" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="842.0" y="377.0" font-size="9.2" fill="#475569" font-weight="600" text-anchor="middle">LAN 直连</text>
+<rect x="880" y="265" width="760" height="460" rx="14" fill="#eff5fd" stroke="#2c6cb0" stroke-width="2" stroke-dasharray="9 6"/>
+<rect x="898" y="253" width="300" height="24" rx="6" fill="#ffffff"/>
+<text x="906.0" y="270.0" font-size="13" fill="#12325c" font-weight="700" text-anchor="middle" letter-spacing="0.3">Raspberry Pi · ARM Linux 边缘网关</text>
+<rect x="905" y="320" width="200" height="140" rx="10" fill="#d9e8fb" stroke="#4882c4" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1005.0" y="376.5" font-size="8.8" fill="#4882c4" font-weight="700" text-anchor="middle" letter-spacing="1.4">NETWORK · 网络接入线程</text>
+<text x="1005.0" y="393.5" font-size="13.5" fill="#12325c" font-weight="700" text-anchor="middle">TcpServer / EpollServer</text>
+<text x="1005.0" y="411.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">监听 0.0.0.0:8888</text>
+<text x="1005.0" y="426.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">接收 ESP32 网络字节流</text>
+<rect x="905" y="500" width="200" height="140" rx="10" fill="#ffeaa7" stroke="#d9a300" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1005.0" y="556.5" font-size="8.8" fill="#d9a300" font-weight="700" text-anchor="middle" letter-spacing="1.4">CORE · 核心枢纽</text>
+<text x="1005.0" y="573.5" font-size="13.5" fill="#5c4300" font-weight="700" text-anchor="middle">RingQueue 环形队列</text>
+<text x="1005.0" y="591.5" font-size="8.6" fill="#6b5300" font-weight="400" text-anchor="middle">生产者 - 消费者模型</text>
+<text x="1005.0" y="606.5" font-size="8.6" fill="#6b5300" font-weight="400" text-anchor="middle">std::mutex + condition_variable</text>
+<rect x="1160" y="500" width="200" height="140" rx="10" fill="#d9e8fb" stroke="#4882c4" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1260.0" y="556.5" font-size="8.8" fill="#4882c4" font-weight="700" text-anchor="middle" letter-spacing="1.4">WORKER · 业务处理线程</text>
+<text x="1260.0" y="573.5" font-size="13.5" fill="#12325c" font-weight="700" text-anchor="middle">数据解析 GlobalState</text>
+<text x="1260.0" y="591.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">数据校验 / 存原子变量</text>
+<text x="1260.0" y="606.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">JSON 封装</text>
+<rect x="1160" y="300" width="200" height="140" rx="10" fill="#d9f2e3" stroke="#2f9e63" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1260.0" y="356.5" font-size="8.8" fill="#2f9e63" font-weight="700" text-anchor="middle" letter-spacing="1.4">UPLINK · 上云</text>
+<text x="1260.0" y="373.5" font-size="13" fill="#14532d" font-weight="700" text-anchor="middle">MqttManager</text>
+<text x="1260.0" y="391.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">组包发布 Topic</text>
+<text x="1260.0" y="406.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">QoS1 · 断线重连</text>
+<rect x="1425" y="500" width="195" height="140" rx="10" fill="#ece4fb" stroke="#7a4fc0" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1522.5" y="556.5" font-size="8.8" fill="#7a4fc0" font-weight="700" text-anchor="middle" letter-spacing="1.4">LOCAL · 本地服务</text>
+<text x="1522.5" y="573.5" font-size="13" fill="#3b1d6e" font-weight="700" text-anchor="middle">EpollServer</text>
+<text x="1522.5" y="591.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">HTTP Server</text>
+<text x="1522.5" y="606.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">返回最新状态 JSON</text>
+<path d="M1005.0,460.0 L1005.0,500.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1029.0" y="474.8" width="39.9" height="14.7" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="1049.0" y="484.0" font-size="9.2" fill="#334155" font-weight="600" text-anchor="middle">push()</text>
+<path d="M1105.0,570.0 L1160.0,570.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1115.1" y="547.8" width="34.8" height="14.7" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="1132.5" y="557.0" font-size="9.2" fill="#334155" font-weight="600" text-anchor="middle">pop()</text>
+<path d="M1260.0,500.0 L1260.0,440.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1300.6" y="462.8" width="70.8" height="14.7" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="1336.0" y="472.0" font-size="9.2" fill="#1f7a4d" font-weight="600" text-anchor="middle">MQTT PUBLISH</text>
+<path d="M1360.0,570.0 L1425.0,570.0" fill="none" stroke="#475569" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1360.3" y="548.0" width="64.4" height="14.5" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="1392.5" y="557.0" font-size="9.0" fill="#334155" font-weight="600" text-anchor="middle">HTTP Server</text>
+<rect x="905" y="652" width="560" height="52" rx="8" fill="#fffbe6" stroke="#d9a300" stroke-width="1.3" stroke-dasharray="5 4"/>
+<text x="919.0" y="673.0" font-size="9.3" fill="#8a6416" font-weight="400" text-anchor="start">备注：现有串口版代码只需把 SerialManager 的数据源换成 Socket 监听，</text>
+<text x="919.0" y="690.0" font-size="9.3" fill="#8a6416" font-weight="400" text-anchor="start">RingQueue / 业务处理 / 前端接口全部原样复用，改动集中在接入层。</text>
+<path d="M1360.0,370.0 L1780.0,370.0" fill="none" stroke="#475569" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1477.9" y="347.4" width="140.1" height="15.1" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="1548.0" y="357.0" font-size="9.6" fill="#1f7a4d" font-weight="600" text-anchor="middle">MQTT 协议（无线 / 跨公网）</text>
+<rect x="1780" y="300" width="290" height="140" rx="10" fill="#d9f2e3" stroke="#2f9e63" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1925.0" y="356.5" font-size="8.8" fill="#2f9e63" font-weight="700" text-anchor="middle" letter-spacing="1.4">CLOUD · 云端展示</text>
+<text x="1925.0" y="373.5" font-size="13" fill="#14532d" font-weight="700" text-anchor="middle">MQTT Broker</text>
+<text x="1925.0" y="391.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">Mosquitto / 阿里云 IoT</text>
+<text x="1925.0" y="406.5" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">云端大屏 · 远程订阅</text>
+<path d="M1620.0,570.0 L1780.0,570.0" fill="none" stroke="#475569" stroke-width="1.9" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrow)"/>
+<rect x="1641.9" y="534.6" width="120.1" height="27.8" rx="4" fill="#ffffff" opacity="0.92"/>
+<text x="1702.0" y="544.0" font-size="9.4" fill="#5b3f8f" font-weight="600" text-anchor="middle">HTTP GET 请求</text>
+<text x="1702.0" y="556.9" font-size="9.4" fill="#5b3f8f" font-weight="600" text-anchor="middle">（局域网 / Localhost）</text>
+<rect x="1780" y="500" width="290" height="140" rx="10" fill="#ece4fb" stroke="#7a4fc0" stroke-width="1.6" filter="url(#sh)"/>
+<text x="1925.0" y="564.0" font-size="8.8" fill="#7a4fc0" font-weight="700" text-anchor="middle" letter-spacing="1.4">LOCAL UI · 本地展示</text>
+<text x="1925.0" y="581.0" font-size="12.5" fill="#3b1d6e" font-weight="700" text-anchor="middle">树莓派 HDMI 屏幕 / Qt HMI</text>
+<text x="1925.0" y="599.0" font-size="9.8" fill="#4b5563" font-weight="400" text-anchor="middle">Qt/QML 大屏 · 5 秒轮询刷新</text>
+<text x="55.0" y="800.0" font-size="11" fill="#94a3b8" font-weight="700" text-anchor="start" letter-spacing="1.5">图例</text>
+<rect x="99" y="790" width="15" height="15" rx="4" fill="#ffe8d1" stroke="#e08b3c" stroke-width="1.4"/>
+<text x="121.0" y="802.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">ESP32 无线节点</text>
+<rect x="248.0" y="790" width="15" height="15" rx="4" fill="#eef1f5" stroke="#7b8794" stroke-width="1.4"/>
+<text x="270.0" y="802.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">网络通道</text>
+<rect x="335.2" y="790" width="15" height="15" rx="4" fill="#d9e8fb" stroke="#4882c4" stroke-width="1.4"/>
+<text x="357.2" y="802.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">网关核心</text>
+<rect x="422.4" y="790" width="15" height="15" rx="4" fill="#ffeaa7" stroke="#d9a300" stroke-width="1.4"/>
+<text x="444.4" y="802.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">核心枢纽</text>
+<rect x="509.59999999999997" y="790" width="15" height="15" rx="4" fill="#d9f2e3" stroke="#2f9e63" stroke-width="1.4"/>
+<text x="531.6" y="802.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">上云链路</text>
+<rect x="596.8" y="790" width="15" height="15" rx="4" fill="#ece4fb" stroke="#7a4fc0" stroke-width="1.4"/>
+<text x="618.8" y="802.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">本地展示</text>
+<text x="55.0" y="832.0" font-size="11" fill="#94a3b8" font-weight="700" text-anchor="start" letter-spacing="1.5">线型</text>
+<line x1="99" y1="828" x2="159" y2="828" stroke="#475569" stroke-width="1.9"/>
+<path d="M159,823 L169,828 L159,833 z" fill="#475569"/>
+<text x="177.0" y="832.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">实线 = 有线数据流</text>
+<line x1="355" y1="828" x2="415" y2="828" stroke="#e08b3c" stroke-width="1.9" stroke-dasharray="7 6"/>
+<path d="M415,823 L425,828 L415,833 z" fill="#e08b3c"/>
+<text x="433.0" y="832.0" font-size="10.3" fill="#475569" font-weight="500" text-anchor="start">虚线 = Wi-Fi 无线链路</text>
+<text x="2105.0" y="874.0" font-size="9.8" fill="#b6c2d1" font-weight="400" text-anchor="end" letter-spacing="0.6">ESP32 · Wi-Fi TCP · epoll · RingQueue · MQTT · Qt/QML</text>
+</svg>
