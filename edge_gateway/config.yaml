@@ -1,6 +1,6 @@
 gateway:
-  serial_port: "/dev/ttyUSB0"
+  serial_port: "/dev/ttyUSB0"  # 保持你实际的串口号
   mqtt:
-    broker_ip: "127.0.0.1"
+    broker_ip: "172.22.94.207" # 🚨 换成你刚拿到的 IP
     broker_port: 1883
     topic: "edge/device/data"
