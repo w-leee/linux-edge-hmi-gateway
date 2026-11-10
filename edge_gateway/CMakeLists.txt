@@ -14,18 +14,15 @@ add_executable(gateway
     src/GlobalState.cpp
     src/SerialManager.cpp
     src/MqttManager.cpp
-    src/HttpServerManager.cpp
+    src/EpollServer.cpp  # 🚨 替换为了 EpollServer
 )
 
 target_include_directories(gateway PRIVATE include)
 target_link_libraries(gateway PRIVATE Threads::Threads spdlog::spdlog mosquitto yaml-cpp)
 
-# ==========================================
-# 单元测试配置
-# ==========================================
+# 单元测试
 enable_testing()
 find_package(GTest REQUIRED)
-
 add_executable(test_ring_queue tests/test_ring_queue.cpp)
 target_include_directories(test_ring_queue PRIVATE include)
 target_link_libraries(test_ring_queue PRIVATE Threads::Threads GTest::gtest GTest::gtest_main)

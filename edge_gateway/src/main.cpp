@@ -9,19 +9,16 @@
 #include "GlobalState.hpp"
 #include "SerialManager.hpp"
 #include "MqttManager.hpp"
-#include "HttpServerManager.hpp"
+#include "EpollServer.hpp" // 🚨 替换头文件
 
-// 全局运行状态标志
 std::atomic<bool> g_running{true};
 
-// 🚨 信号处理：捕获到 Ctrl+C 时触发
 void signalHandler(int signum) {
     spdlog::warn("接收到退出信号 ({}), 准备优雅退出...", signum);
-    g_running = false; // 通知主循环退出
+    g_running = false;
 }
 
 int main() {
-    // 注册 SIGINT (Ctrl+C) 和 SIGTERM (kill命令) 的监听
     std::signal(SIGINT, signalHandler);
     std::signal(SIGTERM, signalHandler);
 
@@ -44,16 +41,14 @@ int main() {
     RingQueue<std::string> data_queue(10);
     SerialManager serial(serial_port, data_queue);
     MqttManager mqtt(mqtt_ip, mqtt_port);
-    HttpServerManager http;
+    EpollServer epoll_server(8080); // 🚨 实例化 EpollServer
 
     mqtt.connectBroker();
-    http.start();
+    epoll_server.start(); // 🚨 启动 Epoll 网络服务
     serial.start();
 
-    // 消费者线程
     spdlog::info("消费者线程: 启动");
     std::thread consumer([&]() {
-        // 只要 g_running 为 true，或者队列里还有没处理完的数据，就继续处理
         while (g_running || data_queue.size() > 0) { 
             try {
                 std::string data = data_queue.pop();
@@ -78,23 +73,20 @@ int main() {
         spdlog::info("消费者线程: 已退出");
     });
 
-    // 🚨 主线程阻塞等待退出信号
     while (g_running) {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
-    // 🚨 开始退出清理流程
     spdlog::info("【1/3】正在停止串口接收...");
     serial.stop(); 
     
-    spdlog::info("【2/3】正在停止 HTTP 服务...");
-    http.stop();
+    spdlog::info("【2/3】正在停止 Epoll 网络服务...");
+    epoll_server.stop();
 
-    // 塞入一个空字符串毒丸，唤醒可能还在阻塞的消费者线程
     data_queue.push(""); 
     
     if (consumer.joinable()) {
-        consumer.join(); // 等待队列中剩余的数据处理完毕
+        consumer.join(); 
     }
 
     spdlog::info("【3/3】资源清理完毕。");
