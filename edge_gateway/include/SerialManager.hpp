@@ -9,7 +9,7 @@ public:
     SerialManager(const std::string& port, RingQueue<std::string>& queue);
     ~SerialManager();
     void start();
-    void stop();
+    void stop(); // 🚨 停止并唤醒阻塞
 
 private:
     void readLoop();
@@ -17,5 +17,5 @@ private:
     RingQueue<std::string>& data_queue;
     std::atomic<bool> running{false};
     std::thread worker_thread;
-    int fd{-1};
+    std::atomic<int> fd{-1}; // 🚨 改为原子操作，方便其他线程强制关闭，打断阻塞的 read
 };

@@ -3,7 +3,7 @@
 #include <yaml-cpp/yaml.h>
 #include <thread>
 #include <cstdio>
-#include <csignal>   // 🚨 引入信号处理
+#include <csignal>
 #include <chrono>
 #include "RingQueue.hpp"
 #include "GlobalState.hpp"
@@ -11,24 +11,23 @@
 #include "MqttManager.hpp"
 #include "HttpServerManager.hpp"
 
-// 🚨 全局原子变量，用于控制所有线程的生死
+// 全局运行状态标志
 std::atomic<bool> g_running{true};
 
-// 🚨 信号处理函数：捕获 Ctrl+C
+// 🚨 信号处理：捕获到 Ctrl+C 时触发
 void signalHandler(int signum) {
-    spdlog::warn("捕获到终止信号 ({})，准备优雅退出...", signum);
-    g_running = false;
+    spdlog::warn("接收到退出信号 ({}), 准备优雅退出...", signum);
+    g_running = false; // 通知主循环退出
 }
 
 int main() {
-    // 🚨 注册信号捕获
+    // 注册 SIGINT (Ctrl+C) 和 SIGTERM (kill命令) 的监听
     std::signal(SIGINT, signalHandler);
     std::signal(SIGTERM, signalHandler);
 
     spdlog::set_pattern("[%Y-%m-%d %H:%M:%S.%e] [%^%l%$] [thread %t] %v");
     spdlog::info("Edge Gateway 启动...");
 
-    // 1. 解析配置
     std::string serial_port, mqtt_ip, mqtt_topic;
     int mqtt_port;
     try {
@@ -42,21 +41,20 @@ int main() {
         return -1;
     }
 
-    // 2. 实例化各个模块
     RingQueue<std::string> data_queue(10);
     SerialManager serial(serial_port, data_queue);
     MqttManager mqtt(mqtt_ip, mqtt_port);
     HttpServerManager http;
 
-    // 3. 启动模块
     mqtt.connectBroker();
     http.start();
     serial.start();
 
-    // 4. 消费者线程（优化：在退出时处理完剩余数据）
+    // 消费者线程
     spdlog::info("消费者线程: 启动");
     std::thread consumer([&]() {
-        while (g_running || data_queue.size() > 0) { // 🚨 即使 g_running 为 false，只要队列里还有数据就继续处理
+        // 只要 g_running 为 true，或者队列里还有没处理完的数据，就继续处理
+        while (g_running || data_queue.size() > 0) { 
             try {
                 std::string data = data_queue.pop();
                 if (data.empty()) continue;
@@ -80,23 +78,26 @@ int main() {
         spdlog::info("消费者线程: 已退出");
     });
 
-    // 🚨 5. 主线程进入等待循环（替代原来的 join）
+    // 🚨 主线程阻塞等待退出信号
     while (g_running) {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
     }
 
-    // 🚨 6. 清理工作
-    spdlog::info("正在停止各模块...");
-    serial.stop();  // 停止生产者（关闭串口，唤醒阻塞的 read）
-    http.stop();    // 停止 HTTP 服务
+    // 🚨 开始退出清理流程
+    spdlog::info("【1/3】正在停止串口接收...");
+    serial.stop(); 
+    
+    spdlog::info("【2/3】正在停止 HTTP 服务...");
+    http.stop();
 
-    // 给消费者 1 秒钟把队列里剩余的数据发出去
-    std::this_thread::sleep_for(std::chrono::seconds(1));
-
-    // 塞入毒丸唤醒消费者线程（如果它卡在 pop 的话）
+    // 塞入一个空字符串毒丸，唤醒可能还在阻塞的消费者线程
     data_queue.push(""); 
-    consumer.join(); 
+    
+    if (consumer.joinable()) {
+        consumer.join(); // 等待队列中剩余的数据处理完毕
+    }
 
-    spdlog::info("Edge Gateway 已安全退出。Bye!");
+    spdlog::info("【3/3】资源清理完毕。");
+    spdlog::info("Edge Gateway 已安全退出。Bye! 👋");
     return 0;
 }

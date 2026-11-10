@@ -1,5 +1,5 @@
 gateway:
-  serial_port: "/dev/ttyUSB1"
+  serial_port: "/dev/ttyUSB0"
   mqtt:
     broker_ip: "127.0.0.1"
     broker_port: 1883
